@@ -32,26 +32,44 @@ scene.add(light2);
 
   // Create a Cube Mesh with basic material ---------
   geometry = new THREE.BoxGeometry(100, 100, 100);
-  material = new THREE.MeshLambertMaterial({  color: "#433F81",});
+  material = new THREE.MeshNormalMaterial({  color: "#433F81",});
   mesh = new THREE.Mesh( geometry, material );
   mesh.position.z = -1000;
 
   geometry2 = new THREE.BoxGeometry(100, 100, 100);
-  material2 = new THREE.MeshLambertMaterial( { color: "#433F81"  } );
+  material2 = new THREE.MeshNormalMaterial( { color: "#433F81"  } );
   mesh2 = new THREE.Mesh( geometry2, material2 );
   mesh2.position.z = -1000;
-  mesh2.position.y = -200;
+  mesh2.position.x = -200;
 
   geometry3 = new THREE.BoxGeometry(100, 100, 100);
-  material3 = new THREE.MeshLambertMaterial( { color: "#433F81" } );
+  material3 = new THREE.MeshNormalMaterial( { color: "#433F81" } );
   mesh3 = new THREE.Mesh( geometry3, material3 );
   mesh3.position.z = -1000;
   mesh3.position.y = 200;
+
+  myshape = new THREE.BoxGeometry(100, 100, 100);
+  skins = new THREE.MeshNormalMaterial( { color: "#433F81" } );
+  combine = new THREE.Mesh( myshape, skins);
+  combine.position.z = -1000;
+  combine.position.y = 20;
+    combine.position.x = 200;
+
+
+    myshape2 = new THREE.BoxGeometry(100, 100, 100);
+    skins2 = new THREE.MeshNormalMaterial( { color: "#433F81" } );
+    combine2 = new THREE.Mesh( myshape2, skins2);
+    combine2.position.z = -1000;
+    combine2.position.y = -200;
+    combine2.position.x = 0;
 
   // Add mesh to scene
   scene.add( mesh );
   scene.add( mesh2);
   scene.add( mesh3);
+  scene.add( combine);
+  scene.add( combine2);
+
 }
 
 //stuff
@@ -63,10 +81,17 @@ var render = function () {
   mesh.rotation.y += 0.01;
 
   mesh2.rotation.x += 0.01; //Continuously rotate the mesh
-  mesh2.rotation.y += 0.01;
+  mesh2.rotation.y += 0.06;
 
-  mesh3.rotation.x += 0.01; //Continuously rotate the mesh
+  mesh3.rotation.x += 0.06; //Continuously rotate the mesh
   mesh3.rotation.y += 0.01;
+
+combine.rotation.z += 0.06; //Continuously rotate the mesh
+  combine.rotation.y += 0.01;
+
+  combine2.rotation.x += 0.07; //Continuously rotate the mesh
+    combine2.rotation.y += 0.01;
+
 
   renderer.setClearColor("#000000");
 
